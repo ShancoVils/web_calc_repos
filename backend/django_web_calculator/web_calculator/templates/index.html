@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <script src="{% static 'js/script.js' %}"></script>
+    <title>Калькулятор</title>
+</head>
+<body>
+    <section>
+        <header>
+            <div class="header__title">
+            {% for Title in Title %}   
+                <span>{{ Title.content}}</span><br>
+            {% endfor %} 
+            </div>
+        </header>
+        <nav class="menu">
+        {% for Sections in Sections %}   
+            <div class="menu__item">
+                <input name="range-value" type="radio" id = "{{Sections.id}}" >
+                <label class="first-label" for="{{Sections.id}}">{{Sections.content}}</label>
+            </div>
+            {% comment %} <div class="menu__item" >
+                <input name="range-value" type="radio"  id = "second"> 
+                <label class="second-label" for="second">Вечные ссылки</label>
+            </div>
+            <div class="menu__item" >
+                <input name="range-value" type="radio"  id = "third">
+                <label class="third-label" for="third">Баннеры</label>
+            </div> {% endcomment %}
+        {% endfor %} 
+        </nav>
+        
+            <div class="flex-counters first">
+            {% for Flex in Flex %}  
+
+                <div class="flex-counters__element first-element">
+                        <h1 class="description-element-title">{{Flex.description_objects.0}}</h1>
+                        <p class="description-element-text">{{Flex.description_objects.1}}</p>
+                </div>
+                    {% comment %} {% for item  in Flex.range_objects %} {% endcomment %}
+                        <div class="flex-counters__element">
+                            <p class="element-title"> {{ forloop.counter0 }} : {{Flex.range_objects.0.0}}</p>
+                            <input type="text" class="count-range-text" id="1" value="500" >
+                            <input type="range" class=" caunt-range" data-count = "1"   min="{{Flex.range_objects.0.1}}" max="{{Flex.range_objects.0.2}}" randge = '1' value="40000" ></input>
+                            <div class="range-span">
+                                <span>{{Flex.range_objects.0.1}} &#8381</span>
+                                <span>{{Flex.range_objects.0.2}} &#8381</span>
+                            </div>
+                        </div>           
+                    {% comment %} {% endfor %}  {% endcomment %}
+            {% endfor %} 
+            </div>
+
+        {% comment %} <div class="flex-counters first">
+            <div class="flex-counters__element first-element">
+                    <h1 class="description-element-title">Цены ссылок</h1>
+                    <p class="description-element-text">Определите, по какой цене планируете продавать ту или иную ссылку на сайте</p>
+            </div>
+            <div class="flex-counters__element">
+                <p class="element-title">Цена ссылки с главной</p>
+                <input type="text" class="count-range-text" id="1" value="40000" >
+                <input type="range" class=" caunt-range" data-count = "1"   min="1" max="200000" randge = '1' value="40000" ></input>
+                <div class="range-span">
+                    <span>1 &#8381</span>
+                    <span>200000 &#8381</span>
+                </div>
+                
+            </div>
+            <div class="flex-counters__element">
+                <p class="element-title">Цена ссылки с УВ2</p>
+                <input type="text" class="count-range-text" id="2" value="25000" >
+                <input type="range" class="caunt-range" data-count = "2"   min="1" max="200000" randge = '1' value="25000">
+                <div class="range-span">
+                    <span>1 &#8381</span>
+                    <span>200000 &#8381</span>
+                </div>
+            </div>
+            <div class="flex-counters__element">
+                <p class="element-title">Цена ссылки с УВ3</p>
+                <input type="text"  class="count-range-text" id="3" value="80000" >
+                <input type="range"  class="caunt-range" data-count = "3" min="1" max="200000" randge = '1' value="80000" >
+                <div class="range-span">
+                    <span>1 &#8381</span>
+                    <span>200000 &#8381</span>
+                </div>
+            </div>
+
+
+            
+            <div class="flex-counters__element">
+                <h1 class="description-element-title" >Страницы и ссылки</h1>
+                <p class="description-element-text" >Количество страниц можно узнать в CMS сайта</p>
+            </div>
+            <div class="flex-counters__element">
+                <p class="element-title">Количество страниц сайта</p>
+                <input type="text" class="count-range-text" id="4" value="50" >
+                <input type="range" class="caunt-range" data-count = "4"  min="1" max="10000" randge = '1' value="50">
+                <div class="range-span">
+                    <span>1 &#8381</span>
+                    <span>10000 &#8381</span>
+                </div>
+            </div>
+            <div class="flex-counters__element">
+                <p class="element-title">Количество ссылок на странице</p>
+                <input type="text" class="count-range-text" id="5" value="70">
+                <input type="range" class="caunt-range" data-count = "5"  min="1" max="100" randge = '1' value="70" >
+                <div class="range-span">
+                    <span>1 &#8381</span>
+                    <span>100 &#8381</span>
+                </div>
+            </div>
+            <div class="flex-counters__element">
+            </div>
+
+
+            <div class="flex-counters__element">
+                <h1 class="description-element-title">Данные о веб-сайте</h1>
+                <p class="description-element-text">Можно узнать на pr-cy.ru <br> и ahrefs.com.</p>
+            </div>
+            <div class="flex-counters__element">
+                <p class="element-title">ИКС Яндекс</p>
+                <input type="text" class="count-range-text" id="6" value="50">
+                <input type="range" class="caunt-range" data-count = "6"  min="1" max="100" randge = '1' value="50" >
+                <div class="range-span">
+                    <span>1 &#8381</span>
+                    <span>100 &#8381</span>
+                </div>
+            </div>
+            <div class="flex-counters__element">
+                <p class="element-title">Domain Rank (Ahrefs)</p>
+                <input type="text"  class="count-range-text" id="7" value="20">
+                <input type="range"  class="caunt-range" data-count = "7" min="1" max="100" randge = '1' value="20" >
+                <div class="range-span">
+                    <span>1 &#8381</span>
+                    <span>100 &#8381</span>
+                </div>
+            </div>
+            <div class="flex-counters__element">
+            </div>
+        </div> {% endcomment %}
+
+        {% comment %} <div class="flex-counters second" >
+            <div class="flex-counters__element first-element">
+                    <h1 class="description-element-title">Цена заявки</h1>
+                    <p class="description-element-text">Укажите стоимость одного лида и их предполагаемое количество в день</p>
+            </div>
+            <div class="flex-counters__element">
+                <p class="element-title">Средняя цена заявки</p>
+                <input type="text" class="count-range-text" id="8" value="200" >
+                <input type="range" class=" caunt-range" data-count = "8"  min="1" max="200000" randge = '1' value="200" >
+                <div class="range-span">
+                    <span>1 &#8381</span>
+                    <span>200000 &#8381</span>
+                </div>
+            </div>
+            <div class="flex-counters__element">
+                <p class="element-title">Количество заявок в день</p>
+                <input type="text" class="count-range-text" id="9" value="100" >
+                <input type="range" class="caunt-range" data-count = "9"  min="1" max="200000" randge = '1' value="100" >
+                <div class="range-span">
+                    <span>1 &#8381</span>
+                    <span>200000 &#8381</span>
+                </div>
+            </div>
+
+            
+            <div class="flex-counters__element">
+                <h1 class="description-element-title">Данные о веб-сайте</h1>
+                <p class="description-element-text" >Можно узнать на pr-cy.ru и ahrefs.com</p>
+            </div>
+            <div class="flex-counters__element">
+                <p class="element-title">ИКС Яндекс</p>
+                <input type="text" class="count-range-text" id="10" value="50"  >
+                <input type="range" class="caunt-range" data-count = "10"  min="1" max="340000" randge = '1' value="50">
+                <div class="range-span">
+                    <span>1 &#8381</span>
+                    <span>340000 &#8381</span>
+                </div>
+            </div>
+            <div class="flex-counters__element">
+                <p class="element-title">Domain Rank (Ahrefs)</p>
+                <input type="text" class="count-range-text" id="11" value="40">
+                <input type="range" class="caunt-range" data-count = "11"  min="1" max="100" randge = '1' value="40">
+                <div class="range-span">
+                    <span>1 &#8381</span>
+                    <span>100 &#8381</span>
+                </div>
+            </div>
+            <div class="flex-counters__element">
+            </div>
+
+
+        </div>
+
+        <div class="flex-counters third" >
+            <div class="flex-counters__element first-element">
+                    <h1 class="description-element-title">Параметры сайта</h1>
+                    <p class="description-element-text">Можно узнать с помощью Я.Метрики <br> или Google Analytic </p>
+            </div>
+            <div class="flex-counters__element">
+                <p class="element-title">Кол-во неуникальных просмотров стр./мес.</p>
+                <input type="text" class="count-range-text" id="12" value="70000" >
+                <input type="range" class=" caunt-range" data-count = "12" min="1" max="70000" randge = '1'>
+                <div class="range-span">
+                    <span>1 &#8381</span>
+                    <span>200000 &#8381</span>
+                </div>
+            </div>
+            <div class="flex-counters__element">
+                <p class="element-title">Кол-во рекламных форматов на странце</p>
+                <input type="text" class="count-range-text" id="13" value="5000" >
+                <input type="range" class="caunt-range" data-count = "13"  min="1" max="200000" randge = '1' value="5000">
+                <div class="range-span">
+                    <span>1 &#8381</span>
+                    <span>200000 &#8381</span>
+                </div>
+            </div>
+            <div class="flex-counters__element">
+            </div>
+            <div class="flex-counters__element">
+                <input class="element-checkbox" type="checkbox" name="" id="checkbox_test">
+                <span class="element-checkbox-alert">На сайте включены мобильные форматы</span>
+            </div>
+            <div class="flex-counters__element">
+            </div>
+        </div> {% endcomment %}
+
+        <footer>
+            <div class="footer__image">
+                <img src="{% static 'images/money.svg'%}" alt="">
+            </div>
+            <div class="footer__calculate-result">
+                <p>Вы заработаете </p>
+                <span class="result-text-summ">
+                    <span class="result-text-summ__first">0</span> 
+                    <span class="result-text-summ__second">0</span> 
+                    <span class="result-text-summ__third">0</span> 
+                    <sup>
+                        &#8381
+                    </sup>
+                </span>
+                    <p class="result-text-month">
+                        в месяц
+                    </p>
+            </div>
+            <div class="footer__button">
+                <button class="main-button">Начать зарабатывать</button>
+            </div>
+        </footer>
+    </section>
+    
+</body>
+</html>
