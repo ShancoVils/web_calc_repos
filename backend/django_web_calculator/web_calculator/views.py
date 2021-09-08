@@ -32,6 +32,6 @@ def put_page_object(request,pk):
     data = request.data.get('page_object')
     serializer = GetPageObjects(instance=person_save, data=data, partial=True)
     if serializer.is_valid(raise_exception=True):
-        personal_save = serializer.save()
+        personal_save = serializer.save()    
     return Response("Данные обновлены".format(personal_save))
 

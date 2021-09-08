@@ -1,3 +1,4 @@
+from re import T
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.utils.translation import gettext_lazy as _
@@ -16,12 +17,12 @@ class PageObjects(models.Model):
         verbose_name_plural = "Объекты страницы"
     
     def __str__(self):
-        return str(self.content)
+        return str(self.id)
 
 class SectionObjects(models.Model):
     description_objects = models.JSONField(_('Описание'),max_length=100)
     input_data_objects = models.JSONField(_('Элементы диапазона'),max_length=400)
-    sector = models.ForeignKey(PageObjects, related_name='sector', on_delete = CASCADE, verbose_name="Сектор")
+    sector = models.ForeignKey(PageObjects, related_name='sector', on_delete = CASCADE, verbose_name="Сектор", null=True, blank=True)
     data_created = models.DateTimeField(_('Дата создания'),default=timezone.now)
 
     class Meta:

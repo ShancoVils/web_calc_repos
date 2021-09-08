@@ -267,7 +267,13 @@ function Page_footer_load(data){
     menu_items = data.filter((item) => item.name_object === "Секция")
     footer_block_p = document.querySelector('.footer__calculate-result')
     footer_block_p.innerHTML += "<p>"+menu_element_array[0].content[1] +"</p>"
-    for (let index = 0; index < menu_items.length; index++) {
+    //
+
+    //ПОМЕТКА
+    //Поставил 3, т.к. формулы 3, при расширении оптимизировать под n-количество
+
+    //
+    for (let index = 0; index < 3; index++) {
         footer_block_p.innerHTML += "<span class = formula_value_"+index+">"+index+"<sup>&#8381</sup></span>"
         footer_block.appendChild(footer_block_p)
     }
@@ -323,6 +329,11 @@ window.addEventListener('click', function(data){
                 footer[0].style.display = ("none")
                 footer[1].style.display = ("none")
                 footer[2].style.display = ("flex")    
+            }
+            else{
+                footer[0].style.display = ("none")
+                footer[1].style.display = ("none")
+                footer[2].style.display = ("none")    
             }
         })
 
