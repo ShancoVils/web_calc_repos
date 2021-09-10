@@ -44,7 +44,7 @@ window.onload = function(){
 //Генерация заголовка
 function Page_header_load(data){
     //Генерация заголовка
-    let header_title = data.find((item) => item.name_object === "Заголовок (начало)");
+    let header_title = data.find((item) => item.name_object === "Title");
 
     header_first = document.querySelector('.first-header-word')
     header_first.innerHTML =  "<span>"+header_title.content[0] +"</span>"
@@ -54,7 +54,7 @@ function Page_header_load(data){
 
 //Генерация меню (секций)
 function Page_sections_load(data){
-    let menu_element_array = data.filter((item) => item.name_object === "Секция");
+    let menu_element_array = data.filter((item) => item.name_object === "Sector");
     query_menu = document.querySelector('.menu')
     for (let index = 0; index < menu_element_array.length; index++) {
         //Создание блока элемента меню
@@ -88,7 +88,7 @@ function Page_sections_load(data){
 
 //Генерация элементов в секциях
 function Page_section_element_load(data){
-    let menu_element_array = data.filter((item) => item.name_object === "Секция");
+    let menu_element_array = data.filter((item) => item.name_object === "Sector");
     main_flex_block = document.querySelector('section')
     for (let index_main = 0; index_main < menu_element_array.length; index_main++) {
 
@@ -256,7 +256,7 @@ function Page_section_element_load(data){
 //Генерация футера
 function Page_footer_load(data){
 
-    let menu_element_array = data.filter((item) => item.name_object === "Футер");
+    let menu_element_array = data.filter((item) => item.name_object === "Footer");
     //Генерация блока "footer"
     let footer_block = document.querySelector('footer')
 
@@ -264,7 +264,7 @@ function Page_footer_load(data){
     footer_block_image.innerHTML = "<img src=\"static/"+menu_element_array[0].content[0] +"\">";
     footer_block.appendChild(footer_block_image)
 
-    menu_items = data.filter((item) => item.name_object === "Секция")
+    menu_items = data.filter((item) => item.name_object === "Sector")
     footer_block_p = document.querySelector('.footer__calculate-result')
     footer_block_p.innerHTML += "<p>"+menu_element_array[0].content[1] +"</p>"
     //
